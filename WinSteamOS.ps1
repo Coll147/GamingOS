@@ -564,5 +564,5 @@ Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "-- ready to rock --"
 
-Start-Sleep -Seconds 10
+Start-Sleep -Seconds 30
 Restart-Computer -Force
