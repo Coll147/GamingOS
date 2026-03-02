@@ -499,6 +499,16 @@ $trigger = New-ScheduledTaskTrigger -AtLogOn
 $principal = New-ScheduledTaskPrincipal -UserId "$env:USERNAME" -LogonType Interactive -RunLevel Highest
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Description "Start Decky Loader"
 Write-Host "Tarea programada '$taskName' creada correctamente."
+
+# Python (para decky)
+$pythoninstaller = "$env:TEMP\python_installer.exe"
+Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe" -OutFile $pythoninstaller -UseBasicParsing -ErrorAction Stop
+Write-Host "Instalador de Python descargado en $pythoninstaller"
+Start-Process $pythoninstaller -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0" -Wait
+Remove-Item $pythoninstaller -Force
+Write-Host "Python instalado y agregado al PATH."
+
+
 # ---------------------------------------------
 # BLOQUE 9.2: STEAM BIG PICTURE COMO SHELL
 # ---------------------------------------------
