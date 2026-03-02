@@ -506,7 +506,7 @@ Write-Host "[9.2/9] Configurando Steam Big Picture como shell..." -ForegroundCol
 $steamPath = "C:\Program Files (x86)\Steam\steam.exe"
 
 if (Test-Path $steamPath) {
-    $shellValue = '"{0}" -bigpicture' -f $steamPath
+    $shellValue = '"{0}" -bigpicture -dev' -f $steamPath
 
     Set-ItemProperty `
       -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" `
